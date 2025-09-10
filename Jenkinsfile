@@ -6,12 +6,28 @@ pipeline{
                 echo "Building..."
             }
             post{
-                success{
+                always{
                     mail to: "david.salim88888@gmail.com",
                     subject: "Build Status Email",
-                    body: "Build was successfu;"
+                    body: "Build log attached"
                 }
             }
         }
+        stage("Test"){
+            steps{
+                echo "Testing ..."
+            }
+        }
+        stage("Deploy"){
+            steps{
+                echo "Deploying ..."
+            }
+        }
+        stage("Complete"){
+            steps{
+                echo "Completed."
+            }
+        }
     }
+
 }
